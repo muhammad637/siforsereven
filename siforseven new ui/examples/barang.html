@@ -1,0 +1,634 @@
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    SIFORSEVEN | Service Request
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="../assets/img/Logo.png">
+          </div>
+          <!-- <p>CT</p> -->
+        </a>
+        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+         SIFORSEVEN
+          <!-- <div class="logo-image-big">
+            <img src="../assets/img/logo-big.png">
+          </div> -->
+        </a>
+      </div>
+      <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="logo">
+          <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+            <div class="logo-image-small">
+              <img src="../assets/img/Logo.png">
+            </div>
+            <!-- <p>CT</p> -->
+          </a>
+          <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+            SIFORSEVEN
+            <!-- <div class="logo-image-big">
+              <img src="../assets/img/logo-big.png">
+            </div> -->
+          </a>
+        </div>
+        <div class="sidebar-wrapper">
+          <ul class="nav">
+            <li class="blank ">
+              <a href="./dashboard.html">
+                <i class="fa fa-desktop"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li>
+              <a>
+                <h6 class="ps-6 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="margin-top: 2px;">Pages</h6>
+              </a>
+            </li>
+            <li>
+              <a href="./servicerequest.html">
+                <i class="fa fa-wrench"></i>
+                <p>Service Serquest</p>
+              </a>
+            </li>
+            <li>
+              <a href="./history.html">
+                <i class="nc-icon nc-pin-3"></i>
+                <p>History</p>
+              </a>
+            </li>
+            <li>
+              <a>
+                <h6 class="ps-6 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="margin-top: 2px;">Master</h6>
+              </a>
+            </li>
+            <li class="active">
+              <a href="./barang.html">
+                <i class="fa fa-cube"></i>
+                <p>Barang</p>
+              </a>
+            </li>
+            <li>
+              <a href="./user.html">
+                <i class="nc-icon nc-single-02"></i>
+                <p>User Profile</p>
+              </a>
+            </li>
+            <li>
+              <a href="./tables.html">
+                <i class="nc-icon nc-tile-56"></i>
+                <p>Table List</p>
+              </a>
+            </li>
+            <li>
+              <a href="./typography.html">
+                <i class="nc-icon nc-caps-small"></i>
+                <p>Typography</p>
+              </a>
+            </li>
+            <li class="active-pro">
+              <a href="./upgrade.html">
+                <i class="nc-icon nc-spaceship"></i>
+                <p>Upgrade to PRO</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">List Barang</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <form>
+              
+            </form>
+            <ul class="navbar-nav">
+              
+              <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="nc-icon nc-bell-55"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn-rotate" href="javascript:;">
+                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <div class="card">
+              
+              <div class="card-header">
+                <h4 class="card-title">List Barang</h4>
+
+                <button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#modaltambah">
+                  <i class="fa fa-plus-square" aria-hidden="true"></i> Tambah
+                </button>
+                
+              </div>
+              
+              <div class="card-body" style="height: 100%;">
+                <div class="table-responsive">
+                  <table id="example" class="table table-striped" style="width:100%">
+                    <thead class=" text-secondary">
+                      <th class="text-center">JENIS BARANG</th>
+                      <th class="text-center">MERK BARANG</th>
+                      <th class="text-center">TIPE BARANG/SERI</th>
+                      <th class="text-center">STATUS</th>
+                      <th class="text-center">AKSI</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">
+                         KOMPUTER
+                        </td>
+                        <td class="text-center">
+                         ASUS
+                        </td>
+                        <td class="text-center">X-441</td>
+                        <td class="text-center">
+                        Aktif
+                        </td>
+         
+                        
+                        <td class="text-center">
+                          <a href="#modaledit-{{ $barang->id }}" data-bs-toggle="modal"
+                            class="badge bg-warning text-white">edit</a>
+                          <a type="button"
+                          >
+                           <i class="fa fa-times-circle " aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                         KOMPUTER
+                        </td>
+                        <td class="text-center">
+                         ASUS
+                        </td>
+                        <td class="text-center">X-441</td>
+                        <td class="text-center">
+                        Aktif
+                        </td>
+         
+                        
+                        <td class="text-center">
+                          <a href="#modaledit-{{ $barang->id }}" data-bs-toggle="modal"
+                            class="badge bg-warning text-white">edit</a>
+                          <a type="button"
+                          >
+                           <i class="fa fa-times-circle " aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                         KOMPUTER
+                        </td>
+                        <td class="text-center">
+                         ASUS
+                        </td>
+                        <td class="text-center">X-441</td>
+                        <td class="text-center">
+                        Aktif
+                        </td>
+         
+                        
+                        <td class="text-center">
+                          <a href="#modaledit-{{ $barang->id }}" data-bs-toggle="modal"
+                            class="badge bg-warning text-white">edit</a>
+                          <a type="button"
+                          >
+                           <i class="fa fa-times-circle " aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                         KOMPUTER
+                        </td>
+                        <td class="text-center">
+                         ASUS
+                        </td>
+                        <td class="text-center">X-441</td>
+                        <td class="text-center">
+                        Aktif
+                        </td>
+         
+                        
+                        <td class="text-center">
+                          <a href="#modaledit-{{ $barang->id }}" data-bs-toggle="modal"
+                            class="badge bg-warning text-white">edit</a>
+                          <a type="button"
+                          >
+                           <i class="fa fa-times-circle " aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+
+                      
+                    
+                    
+                     
+                    
+                    
+                     
+
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 mx-4 text-capitalize justify-content-start">
+        <!-- jenis barang -->
+        <div class="col-md-4 my-2">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+        
+                                <tr>
+                                    <td>
+                                      <p class="text-xs font-weight mb-0 ps-3">Komputer</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">LAPTOP / NOTEBOOK</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">PRINTER</p>
+                                    </td>
+                                </tr>
+                    
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- tipe barang -->
+
+        <div class="col-md-4 my-2">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merk
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                                <tr>
+                                    <td>
+                                      <p class="text-xs font-weight mb-0 ps-3">ACER</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">ASUS</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">EPSON</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">HP</p>
+                                      <p class="text-xs font-weight mb-0 ps-3">LENOVO</p>
+                                    </td>
+                                </tr>
+                 
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- tipe barang -->
+
+        <div class="col-md-4 my-2">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">tipe/seri
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                                <tr>
+                                    <td>
+                                        <p class="text-xs font-weight mb-0 ps-3">A-421F</p>
+                                        <p class="text-xs font-weight mb-0 ps-3">ALL IN ONE</p>
+                                        <p class="text-xs font-weight mb-0 ps-3">PRINTER</p>
+                                    </td>
+                                </tr>
+                       
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="modaltambahLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modaltambahLabel">Form Tambah Barang</h5>
+                  
+              </div>
+              <form action="{{ route('store.order') }}" method="post">
+                  @csrf
+                  <div class="modal-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <div class="input-group mb-4">
+                                      <select class="form-control" name="user_id" type="text">
+                                          <option value="">Jenis Barang</option>
+                                              <option value="">Komputer</option>
+                                              <option value="">Laptop / Notebook</option>
+                                              <option value="">Printer  </option>
+                                              <option value="jenis-other">Lainyaa ...</option>
+                                      </select>
+                                      <span class="input-group-text"><i class="fa fa-exchange"
+                                              aria-hidden="true"></i></span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group" id="jenis-otherForm">
+                              <div class="input-group mb-4">
+                                <input class="form-control" placeholder="jenis Barang ..." name="jenis"
+                                    type="text">
+                                <span class="input-group-text">
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                          <!-- <div class="col-md-6">
+                              <div class="form-group">
+                                  <div class="input-group mb-4">
+                                      <select class="form-control" name="barang_id" type="text">
+                                          <option value="">Pilih Barang</option>
+                                          @foreach ($barangs as $barang)
+                                              <option value="{{ $barang->id }}">{{ $barang->jenis->jenis }}
+                                                  {{ $barang->merk->merk }} {{ $barang->tipe->tipe }}</option>
+                                          @endforeach
+                                      </select>
+                                      <span class="input-group-text"><i class="fa fa-key"
+                                              aria-hidden="true"></i></span>
+                                  </div>
+                              </div>
+                          </div> -->
+
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <div class="input-group mb-4">
+                                    <select class="form-control" name="user_id" type="text">
+                                      <option value="">Merk Barang</option>
+                  
+                                          <option value="">Acer</option>
+                                          <option value="">Asus</option>
+                                          <option value="jenis-other">Lainya....</option>
+                                    
+                                      </select>
+                                      <span class="input-group-text">
+                                        <i class="fa fa-exchange"
+                                              aria-hidden="true"></i></span>
+                                  </div>
+                                  <div class="input-group mb-4">
+                                    <select class="form-control" name="user_id" type="text">
+                                      <option value="">Tipe Barang</option>
+                                          <option value="{{ $user->id }}">L-1330</option>
+                                          <option value="">L-220</option>
+                                          <option value="">LX-340</option>
+                                          <option value="jenis-other">Lainyaa ...</option>
+                                  </select>
+                                      <span class="input-group-text"><i class="fa fa-exchange" aria-hidden="true"></i></i></span>
+                                  </div> 
+                                  
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group" id="jenis-otherForm">
+                              <div class="input-group mb-4">
+                                <input class="form-control" placeholder="Merk Barang ..." name="jenis"
+                                    type="text">
+                                <span class="input-group-text">
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                                <div class="input-group mb-4">
+                                  <input class="form-control" placeholder="Tipe Barang ..." name="jenis"
+                                      type="text">
+                                  <span class="input-group-text">
+                                      <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                  </span>
+                              </div>
+                            </div>
+                            
+                        </div>
+                        
+                          <!-- <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group mb-4">
+                                  <select class="form-control" name="barang_id" type="text">
+                                    <option value="">Pilih Ruangan</option>
+                                    @foreach ($ruangans as $ruangan)
+                                        <option value="{{ $barang->id }}">{{ $barang->jenis->jenis }}
+                                            {{ $barang->merk->merk }} {{ $barang->tipe->tipe }}</option>
+                                    @endforeach
+                                </select>
+                                    <span class="input-group-text"><i class="fa fa-home"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <input class="form-control" placeholder="Nomer Pelapor" name="Nomer pelapor"
+                                        type="number">
+                                    <span class="input-group-text"><i class="fa fa-mobile" aria-hidden="true"></i></i></span>
+                                </div> 
+                                
+                            </div>
+                        </div> -->
+                      </div>
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn bg-primary">Save</button>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+  </div>
+      <footer class="footer footer-black  footer-white ">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+              </ul>
+            </nav>
+            <div class="credits ml-auto">
+              <span class="copyright">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="../assets/demo/demo.js"></script>
+  <script>
+    function SelectText(element) {
+      var doc = document,
+        text = element,
+        range, selection;
+      if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        range = document.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    }
+    window.onload = function() {
+      var iconsWrapper = document.getElementById('icons-wrapper'),
+        listItems = iconsWrapper.getElementsByTagName('li');
+      for (var i = 0; i < listItems.length; i++) {
+        listItems[i].onclick = function fun(event) {
+          var selectedTagName = event.target.tagName.toLowerCase();
+          if (selectedTagName == 'p' || selectedTagName == 'em') {
+            SelectText(event.target);
+          } else if (selectedTagName == 'input') {
+            event.target.setSelectionRange(0, event.target.value.length);
+          }
+        }
+
+        var beforeContentChar = window.getComputedStyle(listItems[i].getElementsByTagName('i')[0], '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, ""),
+          beforeContent = beforeContentChar.charCodeAt(0).toString(16);
+        var beforeContentElement = document.createElement("em");
+        beforeContentElement.textContent = "\\" + beforeContent;
+        listItems[i].appendChild(beforeContentElement);
+
+        //create input element to copy/paste chart
+        var charCharac = document.createElement('input');
+        charCharac.setAttribute('type', 'text');
+        charCharac.setAttribute('maxlength', '1');
+        charCharac.setAttribute('readonly', 'true');
+        charCharac.setAttribute('value', beforeContentChar);
+        listItems[i].appendChild(charCharac);
+      }
+    }
+  </script>
+</body>
+
+</html>
