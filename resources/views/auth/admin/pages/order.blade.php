@@ -6,121 +6,143 @@
     Service Request
 @endsection
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'User', 'master' => 'pages'])
-    <div class="container-fluid py-4">
-        {{-- <div class="row mt-4 mx-4"> --}}
-        <div class="card mb-4">
-            <div class="card-header pb-0">
-                <h5>List Service Request</h5>
-                @if (auth()->user()->cekLevel == 'admin')
-                    <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#modaltambah">
-                        <i class="ni ni-settings text-sm opacity-10"></i> Request
-                    </button>
-                @endif
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Tanggal Order
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                        Barang</th>
-                                   
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                            Ruangan</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                            Pelapor</th>
-                                 
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pesan
-                                        Service</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kerusakan</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Tanggal Selesai
-                                    </th>
-                                    {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Aksi
-                                    </th> --}}
-                                    @if (auth()->user()->cekLevel == 'admin')
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                            Teknisi</th>
-                                    @else
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi
-                                        </th>
-                                    @endif
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Print
-                                        </th>
-                                </tr>
+    <div class="main-panel">
+        @include('layouts.navbars.auth.topnav', ['title' => 'Service Request', 'master' => 'pages'])
+        <!-- Navbar -->
+        {{-- <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+              <div class="navbar-wrapper">
+                <div class="navbar-toggle">
+                  <button type="button" class="navbar-toggler">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                  </button>
+                </div>
+                <a class="navbar-brand" href="javascript:;">Dashboard</a>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navigation">
+               
+                <ul class="navbar-nav">
+                  <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="nc-icon nc-bell-55"></i>
+                      <p>
+                        <span class="d-lg-none d-md-block">Some Actions</span>
+                      </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link btn-rotate" href="javascript:;">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        
+                      <p>
+                        <span class="d-lg-none d-md-block">Account</span>
+                      </p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <!-- End Navbar --> --}}
+        <div class="content">
+            <div class="row">
 
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
-                                    @php
-                                        // $i += $order->jumlah_order;
-                                        $nohp = $order->no_pelapor;
-                                        if (substr(trim($nohp), 0, 1) == '0') {
-                                            $nohp = '62' . substr(trim($nohp), 1);
-                                        }
-                                        $nohpteknisi = $order->user->no_telephone;
-                                        if (substr(trim($nohpteknisi), 0, 1) == '0') {
-                                            $nohpteknisi = '62' . substr(trim($nohpteknisi), 1);
-                                        }
-                                        // $array = json_decode($order->pesan, true);
-                                    @endphp
-                                    <tr>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $parse($order->tanggal_order) }} <br>{{ $parse_hour($order->created_at) }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">
-                                                {{ $order->barang->jenis->jenis . ' ' . $order->barang->merk->merk . ' ' . $order->barang->tipe->tipe }}
-                                            </p>
-                                        </td>
-                                       
-                                            <td class="text-sm font-weight-bold mb-0">
-                                                {{ $order->ruangan->nama }}</td>
-                                            <td class="text-sm font-weight-bold mb-0">
-                                                <a href="https://wa.me/{{ $nohp }}/?text=SIFORSEVEN%0Auntuk : {{ $order->nama_pelapor }}%0Aservisan barang  {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }} %0Astatus masih :{{ $order->status == null ? 'pending' : $order->status }} %0Adengan keterangan status: {{ $order->pesan_status == null ? 'masih menunggu' : $order->pesan_status }} %0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}"
-                                                    target="_blank"
-                                                    class="badge bg-info p-2"><span> {{ $order->nama_pelapor }}
-                                                    </span> <i class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
-                                            </td>
-                                     
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">
-                                                {{ $order->status == null ? 'pending' : $order->status }}</p>
-                                        </td>
-                                        <td>
-                                            @if ($order->pesan_status != null)
-                                                <button type="button"
-                                                    class="badge bg-gradient-success btn-block mb-0 border-0"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#keterangan-{{ $order->id }}">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                </button>
-                                            @else
-                                                <p class="text-sm font-weight-bold mb-0">
-                                                    {{ $order->pesan_status == null ? ' - ' : $order->pesan_status }}</p>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $order->pesan_kerusakan }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-sm font-weight-bold mb-0">
-                                                {{ $order->tanggal_selesai ? $parse($order->tanggal_selesai) : '-' }}</p>
-                                        </td>
+                <div class="col-md-12">
+                    <div class="card">
 
+                        <div class="card-header">
+                            <h4 class="card-title">List Order Service</h4>
+                            @if (auth()->user()->cekLevel == 'admin')
+                                <button type="button" class="btn bg-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modaltambah">
+                                    <i class="fa fa-wrench" aria-hidden="true"></i> Request
+                                </button>
+                            @endif
+                        </div>
+
+                        <div class="card-body" style="height: 100%;">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-striped" style="width:100%">
+                                    <thead class=" text-secondary">
+                                        <th class="text-center">TANGGAL ORDER</th>
+                                        <th class="text-center">NAMA BARANG</th>
+                                        <th class="text-center">NAMA RUANGAN</th>
+                                        <th class="text-center">NAMA PELAPOR</th>
+                                        <th class="text-center">STATUS</th>
+                                        <th class="text-center">PESAN SERVICE</th>
+                                        <th class="text-center">KERUSAKAN</th>
+                                        <th class="text-center">TANGGAL SELESAI</th>
                                         @if (auth()->user()->cekLevel == 'admin')
+                                            <th class="text-center">NAMA TEKNISI</th>
+                                        @else
+                                            <th class="text-center">AKSI</th>
+                                        @endif
+                                        <th class="text-center">PRINT</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($orders as $order)
+                                            @php
+                                                // $i += $order->jumlah_order;
+                                                $nohp = $order->no_pelapor;
+                                                if (substr(trim($nohp), 0, 1) == '0') {
+                                                    $nohp = '62' . substr(trim($nohp), 1);
+                                                }
+                                                $nohpteknisi = $order->user->no_telephone;
+                                                if (substr(trim($nohpteknisi), 0, 1) == '0') {
+                                                    $nohpteknisi = '62' . substr(trim($nohpteknisi), 1);
+                                                }
+                                                // $array = json_decode($order->pesan, true);
+                                            @endphp
+                                            <tr>
+                                                <td class="text-center"> {{ $parse($order->tanggal_order) }}
+                                                    <br>{{ $parse_hour($order->created_at) }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ $order->barang->jenis->jenis . ' ' . $order->barang->merk->merk . ' ' . $order->barang->tipe->tipe }}
+                                                </td>
+                                                <td class="text-center">{{ $order->ruangan->nama }}</td>
+                                                <td class="text-center"><a
+                                                        href="https://wa.me/{{ $nohp }}/?text=SIFORSEVEN%0Auntuk : {{ $order->nama_pelapor }}%0Aservisan barang  {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }} %0Astatus masih :{{ $order->status == null ? 'pending' : $order->status }} %0Adengan keterangan status: {{ $order->pesan_status == null ? 'masih menunggu' : $order->pesan_status }} %0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}"
+                                                        target="_blank" class="badge bg-info p-2" style="color: white"><span>
+                                                            {{ $order->nama_pelapor }}
+                                                        </span><i class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ $order->status == null ? 'pending' : $order->status }}</td>
+                                                <td class="text-center">
+                                                    @if ($order->pesan_status != null)
+                                                        <button type="button"
+                                                            class="badge bg-gradient-success btn-block mb-0 border-0"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#keterangan-{{ $order->id }}">
+                                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                        </button>
+                                                    @else
+                                                        <p class="text-sm font-weight-bold mb-0">
+                                                            {{ $order->pesan_status == null ? ' - ' : $order->pesan_status }}
+                                                        </p>
+                                                    @endif
+                                                </td>
+                                                <td class="text-center"> {{ $order->pesan_kerusakan }}</td>
+                                                <td class="text-center"> {{ $order->tanggal_selesai ? $parse($order->tanggal_selesai) : '-' }}</td>
+                                                @if (auth()->user()->cekLevel == 'admin')
                                             <td>
 
                                                 <a href="https://wa.me/{{ $nohpteknisi }}/?text=SIFORSEVEN%0Auntuk : {{ $order->user->nama }}%0Aada orderan barang {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }}%0Adengan keluhan {{$order->pesan_kerusakan}} %0Adari ruangan {{ $order->ruangan->nama }} %0Amohon diambil di ruang IT RSUD Blambangan Banyuwangi%0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}%0ATerimakasih"
                                                     target="_blank"
-                                                    class="badge bg-info p-2"><span>{{ $order->user->nama }} </span> <i
+                                                    class="badge bg-info p-2" style="color: white;"><span>{{ $order->user->nama }} </span> <i
                                                         class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
                                             </td>
                                         @else
@@ -129,342 +151,341 @@
                                                     class="badge bg-warning">edit</a>
                                             </td>
                                         @endif
-                                            <td>
-                                            <a href="{{route('order.print', ['order' => $order->id])}}" class="badge bg-success">PRINT</a>
+                                            <td class="text-center">
+                                            <a href="{{route('order.print', ['order' => $order->id])}}" class="badge bg-success" style="color: white;" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                                             </td>
-                                    </tr>
-
-                                    <!-- Modal Pesan Status  -->
-                                    <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
-                                        role="dialog" aria-labelledby="keterangan-{{ $order->id }}Title"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Keterangan
-                                                        Status
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">Nama
-                                                                Teknisi:</label>
-                                                            <input type="text" class="form-control"
-                                                                value="{{ $order->user->nama }}" readonly
-                                                                id="recipient-name">
+                                            </tr>
+                                           
+                                            <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="keterangan-{{ $order->id }}Title"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Keterangan
+                                                                Status
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="message-text" class="col-form-label">Keterangan
-                                                                Status</label>
-                                                            <textarea class="form-control" id="message-text" readonly value="{{ $order->pesan_status }}">{{ $order->pesan_status }}</textarea>
-                                                        </div>
- <div class="form-group">
-                                                            <label for="tanggal_edit" class="col-form-label">Terakhir diupdate</label>
-                                                            <input type="text" id="tanggal_edit" class="form-control" value="{{$parse($order->updated_at).' '.$parse_hour($order->updates_at) }}"readonly></input>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn bg-gradient-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    {{-- modal update order --}}
-                                    <div class="modal fade" id="update-{{ $order->id }}" tabindex="-1" role="dialog"
-                                        aria-labelledby="update-{{ $order->id }}-Title" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Form Update
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <form action="{{ route('update.order', ['order' => $order->id]) }}"
-                                                    method="post">
-                                                    <div class="modal-body">
-
-                                                        @method('put')
-                                                        @csrf
-                                                        <div class="row">
-                                                            <div class="col-md-6">
+                                                        <div class="modal-body">
+                                                            <form>
                                                                 <div class="form-group">
                                                                     <label for="recipient-name"
                                                                         class="col-form-label">Nama
-                                                                        Barang</label>
+                                                                        Teknisi:</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="{{ $order->barang->jenis->jenis . ' ' . $order->barang->merk->merk . ' ' . $order->barang->tipe->tipe }}"
-                                                                        readonly id="recipient-name">
+                                                                        value="{{ $order->user->nama }}" readonly
+                                                                        id="recipient-name">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="message-text"
-                                                                        class="col-form-label">Kerusakan</label>
-                                                                    <input type="text" name=""
-                                                                        value="{{ $order->pesan_kerusakan }}" readonly
-                                                                        class="form-control">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="recipient-name"
-                                                                        class="col-form-label">Status</label>
-                                                                    <select name="status"
-                                                                        id="status-{{ $order->id }}"
-                                                                        class="form-control">
-                                                                        @if ($order->status == 'on progress')
-                                                                            <option value="on progress"
-                                                                                {{ $order->status == 'on progress' ? 'selected' : '' }}>
-                                                                                on progress</option>
-                                                                            <option value="selesai"
-                                                                                {{ $order->status == 'selesai' ? 'selected' : '' }}>
-                                                                                selesai</option>
-                                                                        @else
-                                                                            <option value=""
-                                                                                {{ $order->status == '' ? 'selected' : '' }}>
-                                                                                pending</option>
-                                                                            <option value="on progress"
-                                                                                {{ $order->status == 'on progress' ? 'selected' : '' }}>
-                                                                                on progress</option>
-                                                                            <option value="selesai"
-                                                                                {{ $order->status == 'selesai' ? 'selected' : '' }}>
-                                                                                selesai</option>
-                                                                        @endif
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div id="status_selesai-{{ $order->id }}"
-                                                                    class="form-group"
-                                                                    style="display:{{ $order->status_selesai ? '' : 'none;' }}">
-                                                                    <label for="recipient-name"
-                                                                        class="col-form-label">Status Selesai</label>
-                                                                    <select name="status_selesai" id=""
-                                                                        class="form-control">
-
-                                                                        <option value=""
-                                                                            {{ $order->status_selesai == '' ? 'selected' : '' }}>
-                                                                            Pilih Status Selesai</option>
-                                                                        <option value="rusak berat"
-                                                                            {{ $order->status_selesai == 'Rusak Berat' ? 'selected' : '' }}>
-                                                                            Rusak Berat</option>
-                                                                        <option value="selesai"
-                                                                            {{ $order->status_selesai == 'selesai' ? 'selected' : '' }}>
-                                                                            Bisa Dipakai</option>
-                                                                        {{-- <option value=""
-                                                                            {{ $order->status_selesai == '' ? 'selected' : '' }}>
-                                                                            Pilih Status Selesai</option>
-                                                                        <option value="rusak berat"
-                                                                            {{ $order->status_selesai == 'rusak berat' ? 'selected' : '' }}>
-                                                                            tidak bisa diperbaiki</option>
-                                                                        <option value="selesai"
-                                                                            {{ $order->status_selesai == 'selesai' ? 'selected' : '' }}>
-                                                                            sudah bisa digunakan</option> --}}
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="message-text" class="col-form-label">Pesan
+                                                                        class="col-form-label">Keterangan
                                                                         Status</label>
-                                                                    <textarea name="pesan_status" id="" class="form-control"> {{ $order->pesan_status }}</textarea>
+                                                                    <textarea class="form-control" id="message-text" readonly value="{{ $order->pesan_status }}">{{ $order->pesan_status }}</textarea>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="recipient-name"
-                                                                        class="col-form-label">Tanggal Order</label>
-                                                                    <input type="date"
-                                                                        value="{{ $order->tanggal_order }}"
-                                                                        name="tanggal_order" readonly
-                                                                        class="form-control">
+                                                                    <label for="tanggal_edit"
+                                                                        class="col-form-label">Terakhir diupdate</label>
+                                                                    <input type="text" id="tanggal_edit"
+                                                                        class="form-control"
+                                                                        value="{{ $parse($order->updated_at) . ' ' . $parse_hour($order->updates_at) }}"readonly></input>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="message-text"
-                                                                        class="col-form-label">Tanggal Selesai</label>
-                                                                    <input type="date"
-                                                                        value="{{ $order->tanggal_selesai }}"
-                                                                        name="tanggal_selesai" class="form-control">
-                                                                </div>
-                                                            </div>
+                                                            </form>
                                                         </div>
-
-
-
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn bg-gradient-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn bg-gradient-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit"
-                                                            class="btn bg-gradient-primary">Submit</button>
-                                                    </div>
-                                                </form>
-
+                                                </div>
                                             </div>
+
+
+                                            {{-- modal update order --}}
+                                            <div class="modal fade" id="update-{{ $order->id }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="update-{{ $order->id }}-Title"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Form Update
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <form
+                                                            action="{{ route('update.order', ['order' => $order->id]) }}"
+                                                            method="post">
+                                                            <div class="modal-body">
+
+                                                                @method('put')
+                                                                @csrf
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name"
+                                                                                class="col-form-label">Nama
+                                                                                Barang</label>
+                                                                            <input type="text" class="form-control"
+                                                                                value="{{ $order->barang->jenis->jenis . ' ' . $order->barang->merk->merk . ' ' . $order->barang->tipe->tipe }}"
+                                                                                readonly id="recipient-name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="message-text"
+                                                                                class="col-form-label">Kerusakan</label>
+                                                                            <input type="text" name=""
+                                                                                value="{{ $order->pesan_kerusakan }}"
+                                                                                readonly class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name"
+                                                                                class="col-form-label">Status</label>
+                                                                            <select name="status"
+                                                                                id="status-{{ $order->id }}"
+                                                                                class="form-control">
+                                                                                @if ($order->status == 'on progress')
+                                                                                    <option value="on progress"
+                                                                                        {{ $order->status == 'on progress' ? 'selected' : '' }}>
+                                                                                        on progress</option>
+                                                                                    <option value="selesai"
+                                                                                        {{ $order->status == 'selesai' ? 'selected' : '' }}>
+                                                                                        selesai</option>
+                                                                                @else
+                                                                                    <option value=""
+                                                                                        {{ $order->status == '' ? 'selected' : '' }}>
+                                                                                        pending</option>
+                                                                                    <option value="on progress"
+                                                                                        {{ $order->status == 'on progress' ? 'selected' : '' }}>
+                                                                                        on progress</option>
+                                                                                    <option value="selesai"
+                                                                                        {{ $order->status == 'selesai' ? 'selected' : '' }}>
+                                                                                        selesai</option>
+                                                                                @endif
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div id="status_selesai-{{ $order->id }}"
+                                                                            class="form-group"
+                                                                            style="display:{{ $order->status_selesai ? '' : 'none;' }}">
+                                                                            <label for="recipient-name"
+                                                                                class="col-form-label">Status
+                                                                                Selesai</label>
+                                                                            <select name="status_selesai" id=""
+                                                                                class="form-control">
+
+                                                                                <option value=""
+                                                                                    {{ $order->status_selesai == '' ? 'selected' : '' }}>
+                                                                                    Pilih Status Selesai</option>
+                                                                                <option value="rusak berat"
+                                                                                    {{ $order->status_selesai == 'Rusak Berat' ? 'selected' : '' }}>
+                                                                                    Rusak Berat</option>
+                                                                                <option value="selesai"
+                                                                                    {{ $order->status_selesai == 'selesai' ? 'selected' : '' }}>
+                                                                                    Bisa Dipakai</option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="message-text"
+                                                                                class="col-form-label">Pesan
+                                                                                Status</label>
+                                                                            <textarea name="pesan_status" id="" class="form-control"> {{ $order->pesan_status }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="recipient-name"
+                                                                                class="col-form-label">Tanggal
+                                                                                Order</label>
+                                                                            <input type="date"
+                                                                                value="{{ $order->tanggal_order }}"
+                                                                                name="tanggal_order" readonly
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="message-text"
+                                                                                class="col-form-label">Tanggal
+                                                                                Selesai</label>
+                                                                            <input type="date"
+                                                                                value="{{ $order->tanggal_selesai }}"
+                                                                                name="tanggal_selesai"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn bg-gradient-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit"
+                                                                    class="btn bg-gradient-primary">Submit</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $("#status-{{ $order->id }}").change(function() {
+                                                        // alert($(this).val())
+                                                        if ($(this).val() == 'selesai') {
+                                                            $("#status_selesai-{{ $order->id }}").show();
+                                                            // alert('oke')
+                                                        } else {
+                                                            $("#status_selesai-{{ $order->id }}").hide();
+                                                            // alert("not oke {{ $order->id }}")
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="modaltambahLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaltambahLabel">Form Tambah Order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{ route('store.order') }}" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="teknisi_id" class="text-capitalize">Pilih Teknisi</label>
+                                        <div class="input-group mb-4">
+                                            <select class="form-control" name="user_id" type="text">
+                                                <option value="">Pilih Teknisi</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}">{{ $user->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="input-group-text"><i class="fa fa-user-o"
+                                                    aria-hidden="true"></i></span>
                                         </div>
                                     </div>
-                                    {{-- script form --}}
-                                    <script>
-                                        $(document).ready(function() {
-                                            $("#status-{{ $order->id }}").change(function() {
-                                                // alert($(this).val())
-                                                if ($(this).val() == 'selesai') {
-                                                    $("#status_selesai-{{ $order->id }}").show();
-                                                    // alert('oke')
-                                                } else {
-                                                    $("#status_selesai-{{ $order->id }}").hide();
-                                                    // alert("not oke {{ $order->id }}")
-                                                }
-                                            });
-                                        });
-                                    </script>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="" style="height:100vh;"></div>
-
-    <!-- Modal Tambah User -->
-    <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="modaltambahLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modaltambahLabel">Form Service Request</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('store.order') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="user_id" class="text-capitalize">pilih teknisi</label>
-                                    <div class="input-group mb-4">
-                                        <select class="form-control" name="user_id" type="text">
-                                            <option value="">Pilih Teknisi</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="input-group-text"><i class="fa fa-user-o"
-                                                aria-hidden="true"></i></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="barang_id" class="text-capitalize">Pilih Barang</label>
+                                        <div class="input-group mb-4">
+                                            <select class="form-control" name="barang_id" type="text">
+                                                <option value="">Pilih Barang</option>
+                                                @foreach ($barangs as $barang)
+                                                    <option value="{{ $barang->id }}">{{ $barang->jenis->jenis }}
+                                                        {{ $barang->merk->merk }} {{ $barang->tipe->tipe }}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="input-group-text"><i class="fa fa-key"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="barang_id" class="text-capitalize">pilih Barang</label>
-                                    <div class="input-group mb-4">
-                                        <select class="form-control" name="barang_id" type="text">
-                                            <option value="">Pilih Barang</option>
-                                            @foreach ($barangs as $barang)
-                                                <option value="{{ $barang->id }}">{{ $barang->jenis->jenis }}
-                                                    {{ $barang->merk->merk }} {{ $barang->tipe->tipe }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="input-group-text"><i class="fa fa-key"
-                                                aria-hidden="true"></i></span>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="barang_id" class="text-capitalize">Kerusakan Barang</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" placeholder="Tulis Kendala Disini"
+                                                name="pesan_kerusakan" type="text">
+                                            <span class="input-group-text"><i class="fa fa-hand-rock-o"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                        <label for="ruangan_id" class="text-capitalize">Nama Pelapor</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" placeholder="Nama Pelapor" name="nama_pelapor"
+                                                type="text">
+                                            <span class="input-group-text"><i class="fa fa-user-o"
+                                                    aria-hidden="true"></i></i></span>
+                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pesan_kerusakan" class="text-capitalize">kerusakan barang</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="Tulis Kendala Disini"
-                                            name="pesan_kerusakan" id="pesan_kerusakan" type="text" value="">
-                                        <span class="input-group-text"><i class="fa fa-hand-rock-o"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="ruangan_id" class="text-capitalize">Pilih Ruangan</label>
-                                    <div class="input-group mb-4">
-                                        <select class="form-control" name="ruangan_id" type="text" id="ruangan_id">
-                                            <option value="">Pilih Ruangan</option>
-                                            @foreach ($ruangans as $ruangan)
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ruangan_id" class="text-capitalize">Pilih Ruangan</label>
+                                        <div class="input-group mb-4">
+                                            <select class="form-control" name="ruangan_id" type="text">
+                                                <option value="">Pilih Ruangan</option>
+                                                @foreach ($ruangans as $ruangan)
                                                 <option value="{{ $ruangan->id }}">{{ $ruangan->nama }}
                                                     {{ $ruangan->no_hp }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="input-group-text"><i class="fa fa-home"
-                                                aria-hidden="true"></i></span>
+                                                @endforeach
+                                            </select>
+                                            <span class="input-group-text"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                        <label for="ruangan_id" class="text-capitalize">Nomer Pelapor</label>
+                                        <div class="input-group mb-4">
+                                    
+                                            <input class="form-control" placeholder="ex: 081xxxxxxxx" name="no_pelapor"
+                                                type="number">
+                                            <span class="input-group-text"><i class="fa fa-mobile"
+                                                    aria-hidden="true"></i></i></span>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nama_pelapor" class="text-capitalize">Nama Pelapor</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="nama pelapor" name="nama_pelapor"
-                                            id="nama_pelapor" type="text" value="">
-                                        <span class="input-group-text"><i class="fa fa-user-o"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="no_pelapor" class="text-capitalize">No Handphone Pelapor</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="ex: 081xxxxxxxx" name="no_pelapor"
-                                            id="no_pelapor" type="text" value="">
-                                        <span class="input-group-text"><i class="fa fa-phone"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn bg-primary">Buat Request</button>
                         </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">tutup</button>
-                        <button type="submit" class="btn bg-warning text-capitalize ">buat request</button>
-                    </div>
-
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
+        <footer class="footer footer-black  footer-white ">
+            <div class="text-center">
+              
+        
+                <div class="credits ">
+                  <span class="copyright">
+                    © <script>
+                      document.write(new Date().getFullYear())
+                    </script>, made with <i class="fa fa-heart heart"></i> by Student Poliwangi
+                  </span>
+                </div>
+              
+            </div>
+          </footer>
     </div>
 @endsection
