@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 @section('title')
     Landing Page
 @endsection
@@ -60,9 +60,9 @@
 
 
 
-@endsection --}}
+@endsection
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -94,4 +94,4 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </body>
-</html>
+</html> --}}
