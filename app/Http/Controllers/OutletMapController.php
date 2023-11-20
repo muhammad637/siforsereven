@@ -11,6 +11,7 @@ class OutletMapController extends Controller
     //
     public function index(Request $request)
     {
+        // return 'testing';
         $outlets = Outlet::orderBy('created_at','desc')->get();
         return view('outlets.map',[
             'outlets'=>$outlets
