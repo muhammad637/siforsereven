@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['title' => 'Barang', 'title'])
 @section('title')
     Master Barang
 @endsection
@@ -107,6 +107,142 @@
                                 </div>
                             </td>
                           </tr>
+                          <div class="modal fade" id="modaledit-{{ $barang->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="modaledittbarang" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-capitalize" id="modaleditbarang">Form Edit
+                                            barang {{ $barang->tipe->tipe }} {{ $barang->merk->merk }}</h5>
+                                    </div>
+                                    <form action="{{ route('update.barang', ['barang' => $barang->id]) }}"
+                                        method="post">
+                                        @method('put')
+                                        @csrf
+                                        <input type="hidden" value="{{ $barang->id }}" name="current_barang">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="">Jenis Barang</label>
+                                                    <div class="input-group mb-4">
+                                                        {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
+                                                        <select class="form-control text-capitalize" name="jenis_id"
+                                                            id="jenis-{{ $barang->id }}">
+                                                            @foreach ($jenis as $j)
+                                                                @if ($j->status == 'aktif')
+                                                                    <option value="{{ $j->id }}"
+                                                                        {{ $j->id == $barang->jenis->id ? 'selected' : '' }}
+                                                                        class="text-uppercase">
+                                                                        {{ $j->jenis }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            <option value="jenis_other">lainnya ...</option>
+                                                        </select>
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="jenis_other-{{ $barang->id }}"
+                                                        style="display:none;">
+                                                        <label for="other" class="text-capitalize">jenis Barang
+                                                            Lainnya</label>
+                                                        <div class="input-group mb-4">
+                                                            <input class="form-control" placeholder="jenis Barang ..."
+                                                                name="jenis" type="text">
+                                                            <span class="input-group-text">
+                                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- merk barang --}}
+                                                <div class="col-md-6">
+                                                    <label for="">Merk Barang</label>
+                                                    <div class="input-group mb-4">
+                                                        {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
+                                                        <select class="form-control text-capitalize" name="merk_id"
+                                                            id="merk-{{ $barang->id }}">
+                                                            @foreach ($merks as $merk)
+                                                                @if ($merk->status == 'aktif')
+                                                                    <option value="{{ $merk->id }}"
+                                                                        {{ $barang->merk->id == $merk->id ? 'selected' : '' }}
+                                                                        class="text-uppercase">
+                                                                        {{ $merk->merk }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            <option value="merk_other">lainnya ...</option>
+                                                        </select>
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="merk_other-{{ $barang->id }}"
+                                                        style="display:none;">
+                                                        <label for="other" class="text-capitalize">merk Barang
+                                                            Lainnya</label>
+                                                        <div class="input-group mb-4">
+                                                            <input class="form-control" placeholder="Merk Barang ..."
+                                                                name="merk" type="text">
+                                                            <span class="input-group-text">
+                                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- tipe barang --}}
+                                                <div class="col-md-6">
+                                                    <label for="">Tipe Barang/Seri</label>
+                                                    <div class="input-group mb-4">
+                                                        {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
+                                                        <select class="form-control text-capitalize" name="tipe_id"
+                                                            id="tipe-{{ $barang->id }}">
+                                                            @foreach ($tipes as $tipe)
+                                                                @if ($tipe->status == 'aktif')
+                                                                    <option value="{{ $tipe->id }}"
+                                                                        {{ $tipe->id == $barang->tipe_id ? 'selected' : '' }}
+                                                                        class="text-uppercase">
+                                                                        {{ $tipe->tipe }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            <option value="tipe_other">lainnya ...</option>
+                                                        </select>
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="tipe_other-{{ $barang->id }}"
+                                                        style="display:none;">
+                                                        <label for="other" class="text-capitalize">tipe Barang/Seri
+                                                            Lainnya</label>
+                                                        <div class="input-group mb-4">
+                                                            <input class="form-control" placeholder="Tipe Barang ..."
+                                                                name="tipe" type="text">
+                                                            <span class="input-group-text">
+                                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                    
+                    
+                    
+                    
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn bg-gradient-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn bg-primary">Save</button>
+                                        </div>
+                    
+                                    </form>
+                                </div>
+                            </div>
                           @endforeach
                         </tbody>
                       </table>
@@ -196,11 +332,14 @@
                                         <p class="text-xs font-weight-bold mb-0 ps-3">{{ $tipe->tipe }}</p>
                                     </td>
                                 </tr>
+
+                               
+
+                                   
+                                      
+
                             @endforeach
-                           
-    
-    
-    
+
                             </tbody>
                         </table>
                     </div>
@@ -337,147 +476,6 @@
               </div>
           </div>
       </div>
-
-      <div class="modal fade" id="modaledit-{{ $barang->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="modaledittbarang" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="modaleditbarang">Form Edit
-                        barang {{ $barang->tipe->tipe }} {{ $barang->merk->merk }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('update.barang', ['barang' => $barang->id]) }}"
-                    method="post">
-                    @method('put')
-                    @csrf
-                    <input type="hidden" value="{{ $barang->id }}" name="current_barang">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Jenis Barang</label>
-                                <div class="input-group mb-4">
-                                    {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
-                                    <select class="form-control text-capitalize" name="jenis_id"
-                                        id="jenis-{{ $barang->id }}">
-                                        @foreach ($jenis as $j)
-                                            @if ($j->status == 'aktif')
-                                                <option value="{{ $j->id }}"
-                                                    {{ $j->id == $barang->jenis->id ? 'selected' : '' }}
-                                                    class="text-uppercase">
-                                                    {{ $j->jenis }}</option>
-                                            @endif
-                                        @endforeach
-                                        <option value="jenis_other">lainnya ...</option>
-                                    </select>
-                                    <span class="input-group-text">
-                                        <i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group" id="jenis_other-{{ $barang->id }}"
-                                    style="display:none;">
-                                    <label for="other" class="text-capitalize">jenis Barang
-                                        Lainnya</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="jenis Barang ..."
-                                            name="jenis" type="text">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- merk barang --}}
-                            <div class="col-md-6">
-                                <label for="">Merk Barang</label>
-                                <div class="input-group mb-4">
-                                    {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
-                                    <select class="form-control text-capitalize" name="merk_id"
-                                        id="merk-{{ $barang->id }}">
-                                        @foreach ($merks as $merk)
-                                            @if ($merk->status == 'aktif')
-                                                <option value="{{ $merk->id }}"
-                                                    {{ $barang->merk->id == $merk->id ? 'selected' : '' }}
-                                                    class="text-uppercase">
-                                                    {{ $merk->merk }}</option>
-                                            @endif
-                                        @endforeach
-                                        <option value="merk_other">lainnya ...</option>
-                                    </select>
-                                    <span class="input-group-text">
-                                        <i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group" id="merk_other-{{ $barang->id }}"
-                                    style="display:none;">
-                                    <label for="other" class="text-capitalize">merk Barang
-                                        Lainnya</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="Merk Barang ..."
-                                            name="merk" type="text">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- tipe barang --}}
-                            <div class="col-md-6">
-                                <label for="">Tipe Barang/Seri</label>
-                                <div class="input-group mb-4">
-                                    {{-- <input type="text" class="form-control" name="merk" placeholder="merk barang .." > --}}
-                                    <select class="form-control text-capitalize" name="tipe_id"
-                                        id="tipe-{{ $barang->id }}">
-                                        @foreach ($tipes as $tipe)
-                                            @if ($tipe->status == 'aktif')
-                                                <option value="{{ $tipe->id }}"
-                                                    {{ $tipe->id == $barang->tipe_id ? 'selected' : '' }}
-                                                    class="text-uppercase">
-                                                    {{ $tipe->tipe }}</option>
-                                            @endif
-                                        @endforeach
-                                        <option value="tipe_other">lainnya ...</option>
-                                    </select>
-                                    <span class="input-group-text">
-                                        <i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group" id="tipe_other-{{ $barang->id }}"
-                                    style="display:none;">
-                                    <label for="other" class="text-capitalize">tipe Barang/Seri
-                                        Lainnya</label>
-                                    <div class="input-group mb-4">
-                                        <input class="form-control" placeholder="Tipe Barang ..."
-                                            name="tipe" type="text">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn bg-gradient-primary">Save</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
     </div>
 
           

@@ -1,7 +1,7 @@
 @php
     use Carbon\Carbon;
 @endphp
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['title' => 'History', 'title'])
 @section('title')
     History
 @endsection

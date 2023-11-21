@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Landing Page', 'title'])
 @section('title')
     Landing Page
 @endsection

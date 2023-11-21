@@ -1,5 +1,6 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
-@section('title') 
+@extends('layouts.app', ['title' => 'Dashboard', 'title'])
+@section('title')
+    Dashboard
 @endsection
 @section('content')
 
@@ -139,16 +140,7 @@
                       <td class="text-center">
                         {{ $order->user->nama }}
                       </td>
-                     
-                     
-                     
-                    
                     </tr>
-                   
-                  
-                  
-                  
-                  
                   </tbody>
                   <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
                     role="dialog" aria-labelledby="keterangan-modalTitle"
@@ -243,3 +235,4 @@
     </div>
   </footer>
 </div>
+@endsection

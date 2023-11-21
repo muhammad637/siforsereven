@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/Logo.png')}}"> --}}
+  <link rel="icon" type="image/png" href="{{asset('assets/img/Logo.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    SIFORSEVEN | DASHBOARD
+    SIFORSEVEN | {{$title}}
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -16,6 +16,7 @@
   <!-- CSS Files -->
   <link href="{{asset('./assets/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('./assets/css/paper-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('./assets/demo/demo.css')}}" rel="stylesheet" />
   
@@ -52,6 +53,7 @@
     <script src="{{asset('./assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{asset('./assets/demo/demo.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script>
       $(document).ready(function() {
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js

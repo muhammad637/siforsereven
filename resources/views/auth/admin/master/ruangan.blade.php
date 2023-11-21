@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@extends('layouts.app', ['title' => 'List Ruangan', 'title'])
 @section('title') Master Ruangan
 @endsection
 @section('content')
