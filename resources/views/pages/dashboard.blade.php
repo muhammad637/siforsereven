@@ -89,7 +89,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="example">
                   <thead class=" text-secondary">
                     <th class="text-center">TANGGAL</th>
                     <th class="text-center">NAMA BARANG</th>

@@ -3,43 +3,9 @@
     Master Barang
 @endsection
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Barang', 'master' => 'Master Data'])
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    
-    
-    <body class="">
-      <div class="wrapper ">
-        
+  
         <div class="main-panel">
-          <!-- Navbar -->
-          <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-            <div class="container-fluid">
-              <div class="navbar-wrapper">
-                <div class="navbar-toggle">
-                  <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                  </button>
-                </div>
-                <a class="navbar-brand" href="javascript:;">List Barang</a>
-              </div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                <form>
-                  
-                </form>
-                
-              </div>
-            </div>
-          </nav>
-          <!-- End Navbar -->
+            @include('layouts.navbars.auth.topnav', ['title' => 'Barang', 'master' => 'Master Data'])
           <div class="content">
             <div class="row">
               
@@ -92,7 +58,7 @@
                                             method="post" class="inline-block">
                                             @method('put')
                                             @csrf
-                                            <button type="submit" class="badge bg-gradient-danger border-0"><i
+                                            <button type="submit" class="badge bg-danger border-0" style="color: white"><i
                                                     class="fa fa-times-circle" aria-hidden="true"></i></button>
                                         </form>
                                     @else
@@ -100,7 +66,7 @@
                                             method="post">
                                             @method('put')
                                             @csrf
-                                            <button type="submit" class="badge bg-gradient-success border-0"><i
+                                            <button type="submit" class="badge bg-success border-0" style="color: white"><i
                                                     class="fa fa-check-circle-o" aria-hidden="true"></i></button>
                                         </form>
                                     @endif
@@ -541,7 +507,4 @@
           }
         }
       </script>
-    </body>
-    
-    </html>
-    @endsection
+@endsection

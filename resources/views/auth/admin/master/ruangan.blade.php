@@ -39,18 +39,18 @@
                                             </td>
                                             <td class="text-center">
                                                 <span
-                                                class="text-center badge badge-sm {{ $ruangan->status == 'nonaktif' ? 'bg-gradient-secondary' : 'bg-gradient-success' }}">{{ $ruangan->status }}</span>
+                                                class="text-center badge badge-sm {{ $ruangan->status == 'nonaktif' ? 'bg-secondary' : 'bg-success' }}" style="color: white;">{{ $ruangan->status }}</span>
                                             </td>
                                         <td class="text-center">
                                             <div class="d-flex px-3 py-1 justify-content-center align-items-center gap-1">
                                                 <a href="#modaledit-{{ $ruangan->id }}" data-bs-toggle="modal"
-                                                    class="badge bg-warning">edit</a>
+                                                    class="badge bg-warning" style="color: white;">edit</a>
                                                 @if ($ruangan->status == 'aktif')
                                                     <form action="{{ route('ruangan.nonaktif', ['ruangan' => $ruangan->id]) }}"
                                                         method="post" class="inline-block">
                                                         @method('put')
                                                         @csrf
-                                                        <button type="submit" class="badge bg-gradient-danger border-0"><i
+                                                        <button type="submit" class="badge bg-danger border-0" style="color: white"><i
                                                                 class="fa fa-times-circle" aria-hidden="true"></i></button>
                                                     </form>
                                                 @else
@@ -58,7 +58,7 @@
                                                         method="post">
                                                         @method('put')
                                                         @csrf
-                                                        <button type="submit" class="badge bg-gradient-success border-0"><i
+                                                        <button type="submit" class="badge bg-success border-0" style="color: white"><i
                                                                 class="fa fa-check-circle-o" aria-hidden="true"></i></button>
                                                     </form>
                                                 @endif
