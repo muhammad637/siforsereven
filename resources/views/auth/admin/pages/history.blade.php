@@ -19,11 +19,12 @@
 
                         <div class="card-header">
                             <h4 class="card-title">HISTORY</h4>
+                                
                             <div class="dropdown">
-                                <a href="#" class="btn bg-gradient-dark dropdown-toggle " data-toggle="dropdown"
+                                <button href="#" class="btn bg-gradient-dark dropdown-toggle " data-toggle="dropdown-menu"
                                     id="navbarDropdownMenuLink2">
                                     <i class="fa fa-arrow-circle-down" aria-hidden="true"></i> Excel
-                                </a>
+                                </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                     <li>
