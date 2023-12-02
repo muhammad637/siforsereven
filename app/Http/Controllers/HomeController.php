@@ -32,6 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      
         $user = User::where('cekLevel', 'teknisi')->where('status', 'aktif')->get();
         $orderOnprogress = Order::where('user_id', auth()->user()->id)
             ->where('status', 'on progress')->count();

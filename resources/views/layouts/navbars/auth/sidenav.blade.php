@@ -2,7 +2,7 @@
     <div class="logo">
       <a href="https://www.creative-tim.com" class="simple-text logo-mini">
         <div class="logo-image-small">
-          <img src="../assets/img/Logo.png">
+          <img src="{{asset('assets/img/Logo.png')}}">
         </div>
         <!-- <p>CT</p> -->
       </a>
@@ -15,9 +15,9 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="active ">
-          <a href="./dashboard.html">
-            <i class="fa fa-desktop"></i>
+        <li class="">
+          <a {{ Route::currentRouteName() == 'home' ? 'active' : ''}} href="{{ route('home')}}">
+            <i class="fa fa-desktop text-danger"></i>
             <p>Dashboard</p>
           </a>
         </li>
@@ -27,52 +27,70 @@
           </a>
         </li>
         <li>
-          <a href="./servicerequest.html">
-            <i class="fa fa-wrench"></i>
-            <p>Service Serquest</p>
+          <a  {{ Route::currentRouteName() == 'order' ? 'active' : ''}} href="{{ route('order')}} ">
+            <i class="fa fa-wrench text-success"></i>
+            <p>Service Request</p>
           </a>
         </li>
         <li>
-          <a href="./history.html">
-            <i class="nc-icon nc-pin-3"></i>
+          <a {{ str_contains(request()->url(), 'history') == true ? 'active' : '' }}  href="{{route('history')}}">
+            <i class="fa fa-history text-primary"></i>
+            
             <p>History</p>
           </a>
         </li>
+        
+        @if (auth()->user()->cekLevel == 'teknisi')
+        <li>
+          <a  {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href=" {{route('profile')}}" >
+            <i class="nc-icon nc-pin-3 text-warning"></i>
+            <p>Profile</p>
+          </a>
+        </li>
+        <li>
+          <a  {{ Route::currentRouteName() == 'outlet_map.index' ? 'active' : '' }} href=" {{route('outlet_map.index')}}" >
+            <i class="nc-icon nc-pin-3"></i>
+            <p>Lokasi</p>
+          </a>
+        </li>
+        @endif
+        @if (auth()->user()->cekLevel == 'admin')
         <li>
           <a>
             <h6 class="ps-6 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="margin-top: 2px;">Master</h6>
           </a>
         </li>
         <li>
-          <a href="./barang.html">
-            <i class="fa fa-cube"></i>
+          <a {{ Route::currentRouteName() == 'barang' ? 'active' : ''}} href="{{route('barang')}}">
+            <i class="fa fa-cube" style="color: #3506CA;"></i>
             <p>Barang</p>
           </a>
         </li>
         <li>
-          <a href="./user.html">
-            <i class="nc-icon nc-single-02"></i>
-            <p>User Profile</p>
+          <a {{ str_contains(request()->url(), 'user') == true ? 'active' : '' }} href="{{route('user.index')}}">
+            <i class="fa fa-users" style="color: black;"></i>
+            <p>User Management</p>
           </a>
         </li>
         <li>
-          <a href="./tables.html">
-            <i class="nc-icon nc-tile-56"></i>
-            <p>Table List</p>
+          <a {{ str_contains(request()->url(), 'ruangan') == true ? 'active' : '' }} href="{{route('ruangan')}}">
+            <i class="fa fa-hospital-o text-primary"></i>
+            <p>Ruangan</p>
           </a>
         </li>
         <li>
-          <a href="./typography.html">
-            <i class="nc-icon nc-caps-small"></i>
-            <p>Typography</p>
+          <a {{Route::currentRouteName() == 'outlet_map.index' ? 'active' : ''}} href="{{route('outlet_map.index')}}">
+            <i class="fa fa-map text-success"></i>
+            <p>Lokasi</p>
           </a>
         </li>
-        <li class="active-pro">
-          <a href="./upgrade.html">
-            <i class="nc-icon nc-spaceship"></i>
-            <p>Upgrade to PRO</p>
+        <li>
+          <a {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href="{{route('profile')}}">
+            <i class="fa fa-user" style="color: blueviolet"></i>
+            <p>Profile</p>
           </a>
         </li>
+        @endif
       </ul>
     </div>
   </div>

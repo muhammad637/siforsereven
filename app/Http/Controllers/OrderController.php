@@ -21,6 +21,7 @@ class OrderController extends Controller
         if (auth()->user()->cekLevel == 'admin') {
             $orders =  Order::where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc')->get();
         }
+ 
         // return $orders;
         return view('auth.admin.pages.order', [
             'barangs' => Barang::where('status','aktif')->orderBy('merk_id', 'asc')->get(),
