@@ -116,12 +116,7 @@
                                     @else
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi
                                     </th>
-
                                     @endif
-                                    
-                                    
-
-
                                 </tr>
 
                             </thead>
