@@ -16,9 +16,10 @@
 
                         <div class="card-header">
                             <h4 class="card-title">List Order Service</h4>
+                           
                             @if (auth()->user()->cekLevel == 'admin')
-                                <button type="button" class="btn bg-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modaltambah">
+                                <button type="button" class="btn bg-primary text-white fw-bold" data-toggle="modal"
+                                    data-target="#modaltambah">
                                     <i class="fa fa-wrench" aria-hidden="true"></i> Request
                                 </button>
                             @endif
@@ -67,7 +68,8 @@
                                                 <td class="text-center">{{ $order->ruangan->nama }}</td>
                                                 <td class="text-center"><a
                                                         href="https://wa.me/{{ $nohp }}/?text=SIFORSEVEN%0Auntuk : {{ $order->nama_pelapor }}%0Aservisan barang  {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }} %0Astatus masih :{{ $order->status == null ? 'pending' : $order->status }} %0Adengan keterangan status: {{ $order->pesan_status == null ? 'masih menunggu' : $order->pesan_status }} %0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}"
-                                                        target="_blank" class="badge bg-info p-2" style="color: white"><span>
+                                                        target="_blank" class="badge bg-info p-2"
+                                                        style="color: white"><span>
                                                             {{ $order->nama_pelapor }}
                                                         </span><i class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
                                                 </td>
@@ -88,26 +90,30 @@
                                                     @endif
                                                 </td>
                                                 <td class="text-center"> {{ $order->pesan_kerusakan }}</td>
-                                                <td class="text-center"> {{ $order->tanggal_selesai ? $parse($order->tanggal_selesai) : '-' }}</td>
+                                                <td class="text-center">
+                                                    {{ $order->tanggal_selesai ? $parse($order->tanggal_selesai) : '-' }}
+                                                </td>
                                                 @if (auth()->user()->cekLevel == 'admin')
-                                            <td>
+                                                    <td>
 
-                                                <a href="https://wa.me/{{ $nohpteknisi }}/?text=SIFORSEVEN%0Auntuk : {{ $order->user->nama }}%0Aada orderan barang {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }}%0Adengan keluhan {{$order->pesan_kerusakan}} %0Adari ruangan {{ $order->ruangan->nama }} %0Amohon diambil di ruang IT RSUD Blambangan Banyuwangi%0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}%0ATerimakasih"
-                                                    target="_blank"
-                                                    class="badge bg-info p-2" style="color: white;"><span>{{ $order->user->nama }} </span> <i
-                                                        class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
-                                            </td>
-                                        @else
-                                            <td>
-                                                <a href="#update-{{ $order->id }}" data-bs-toggle="modal"
-                                                    class="badge bg-warning">edit</a>
-                                            </td>
-                                        @endif
-                                            <td class="text-center">
-                                            <a href="{{route('order.print', ['order' => $order->id])}}" class="badge bg-success" style="color: white;" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                                            </td>
+                                                        <a href="https://wa.me/{{ $nohpteknisi }}/?text=SIFORSEVEN%0Auntuk : {{ $order->user->nama }}%0Aada orderan barang {{ $order->barang->jenis->jenis }} {{ $order->barang->merk->merk }} {{ $order->barang->tipe->tipe }}%0Adengan keluhan {{ $order->pesan_kerusakan }} %0Adari ruangan {{ $order->ruangan->nama }} %0Amohon diambil di ruang IT RSUD Blambangan Banyuwangi%0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}%0ATerimakasih"
+                                                            target="_blank" class="badge bg-info p-2"
+                                                            style="color: white;"><span>{{ $order->user->nama }} </span> <i
+                                                                class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <a href="#update-{{ $order->id }}" data-bs-toggle="modal"
+                                                            class="badge bg-warning">edit</a>
+                                                    </td>
+                                                @endif
+                                                <td class="text-center">
+                                                    <a href="{{ route('order.print', ['order' => $order->id]) }}"
+                                                        class="badge bg-success" style="color: white;" target="_blank"><i
+                                                            class="fa fa-print" aria-hidden="true"></i></a>
+                                                </td>
                                             </tr>
-                                           
+
                                             <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="keterangan-{{ $order->id }}Title"
                                                 aria-hidden="true">
@@ -125,8 +131,7 @@
                                                         <div class="modal-body">
                                                             <form>
                                                                 <div class="form-group">
-                                                                    <label for="recipient-name"
-                                                                        class="col-form-label">Nama
+                                                                    <label for="recipient-name" class="col-form-label">Nama
                                                                         Teknisi:</label>
                                                                     <input type="text" class="form-control"
                                                                         value="{{ $order->user->nama }}" readonly
@@ -320,13 +325,14 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="modaltambahLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modaltambahLabel">Form Tambah Order</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -349,10 +355,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- <div class="col-md-6">
+                                    
+                                </div> --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="barang_id" class="text-capitalize">Pilih Barang</label>
-                                        <div class="input-group mb-4">
+
+                                        <div class="input-group-prepend mb-4">
                                             <select class="form-control" name="barang_id" type="text">
                                                 <option value="">Pilih Barang</option>
                                                 @foreach ($barangs as $barang)
@@ -360,8 +370,8 @@
                                                         {{ $barang->merk->merk }} {{ $barang->tipe->tipe }}</option>
                                                 @endforeach
                                             </select>
-                                            <span class="input-group-text"><i class="fa fa-key"
-                                                    aria-hidden="true"></i></span>
+                                            {{-- <span class="input-group-text"><i class="fa fa-key"
+                                                    aria-hidden="true"></i></span> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -394,8 +404,8 @@
                                             <select class="form-control" name="ruangan_id" type="text">
                                                 <option value="">Pilih Ruangan</option>
                                                 @foreach ($ruangans as $ruangan)
-                                                <option value="{{ $ruangan->id }}">{{ $ruangan->nama }}
-                                                    {{ $ruangan->no_hp }}</option>
+                                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama }}
+                                                        {{ $ruangan->no_hp }}</option>
                                                 @endforeach
                                             </select>
                                             <span class="input-group-text"><i class="fa fa-home"
@@ -403,7 +413,7 @@
                                         </div>
                                         <label for="ruangan_id" class="text-capitalize">Nomer Pelapor</label>
                                         <div class="input-group mb-4">
-                                    
+
                                             <input class="form-control" placeholder="ex: 081xxxxxxxx" name="no_pelapor"
                                                 type="number">
                                             <span class="input-group-text"><i class="fa fa-mobile"
@@ -427,17 +437,18 @@
         </div>
         <footer class="footer footer-black  footer-white ">
             <div class="text-center">
-              
-        
+
+
                 <div class="credits ">
-                  <span class="copyright">
-                    © <script>
-                      document.write(new Date().getFullYear())
-                    </script>, made with <i class="fa fa-heart heart"></i> by Student Poliwangi
-                  </span>
+                    <span class="copyright">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>, made with <i class="fa fa-heart heart"></i> by Student Poliwangi
+                    </span>
                 </div>
-              
+
             </div>
-          </footer>
+        </footer>
     </div>
 @endsection
