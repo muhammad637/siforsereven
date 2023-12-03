@@ -47,12 +47,6 @@
             <p>Profile</p>
           </a>
         </li>
-        <li>
-          <a  {{ Route::currentRouteName() == 'outlet_map.index' ? 'active' : '' }} href=" {{route('outlet_map.index')}}" >
-            <i class="nc-icon nc-pin-3"></i>
-            <p>Lokasi</p>
-          </a>
-        </li>
         @endif
         @if (auth()->user()->cekLevel == 'admin')
         <li>

@@ -17,8 +17,8 @@
                         <div class="card-header">
                             <h4 class="card-title">List Order Service</h4>
                             @if (auth()->user()->cekLevel == 'admin')
-                                <button type="button" class="btn bg-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modaltambah">
+                                <button type="button" class="btn bg-primary" data-toggle="modal"
+                                    data-target="#modaltambah">
                                     <i class="fa fa-wrench" aria-hidden="true"></i> Request
                                 </button>
                             @endif
@@ -336,7 +336,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="teknisi_id" class="text-capitalize">Pilih Teknisi</label>
+                                        <label for="teknisi_id" class="">Pilih Teknisi</label>
                                         <div class="input-group mb-4">
                                             <select class="form-control" name="user_id" type="text">
                                                 <option value="">Pilih Teknisi</option>
