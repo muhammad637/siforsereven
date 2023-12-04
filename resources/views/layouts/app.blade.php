@@ -14,11 +14,11 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="{{asset('./assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-  <link href="{{asset('./assets/css/paper-dashboard.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/paper-dashboard.css')}}" rel="stylesheet" />
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{asset('./assets/demo/demo.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
   
 
 </head>
@@ -39,19 +39,19 @@
     @endauth
 
     {{-- pemanggilan datatables js  --}}
-    <script src="{{asset('./assets/js/core/jquery.min.js')}}"></script>
-    <script src="{{asset('./assets/js/core/popper.min.js')}}"></script>
-    <script src="{{asset('./assets/js/core/bootstrap.min.js')}}"></script>
-    {{-- <script src="{{asset('./assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
+    <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
     <!--  Google Maps Plugin    -->
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
     <!-- Chart JS -->
-    <script src="{{asset('./assets/js/plugins/chartjs.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/chartjs.min.js')}}"></script>
     <!--  Notifications Plugin    -->
-    <script src="{{asset('./assets/js/plugins/bootstrap-notify.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{asset('./assets/js/paper-dashboard.min.js')}}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{asset('./assets/demo/demo.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/paper-dashboard.min.js')}}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! --> --}}
+    <script src="{{asset('assets/demo/demo.js')}}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> --}}
@@ -61,12 +61,12 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
+    {{-- <script>
       $(document).ready(function() {
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
         demo.initChartsPages();
       });
-    </script>
+    </script> --}}
     <script>
       $(document).ready(function() {
         $('#example').DataTable();

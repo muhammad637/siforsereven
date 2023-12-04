@@ -2,7 +2,6 @@
 @section('title') User Management
 @endsection
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'User', 'master' => 'Master'])
     <div class="main-panel">
         @include('layouts.navbars.auth.topnav', ['title' => 'User Management', 'master' => 'pages'])
         <div class="content">
