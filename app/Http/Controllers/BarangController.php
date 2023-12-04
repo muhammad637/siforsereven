@@ -152,6 +152,6 @@ class BarangController extends Controller
         $pesan = "data barang" . $barang->jenis->jenis . ' ' . $barang->merk->merk . ' ' . $barang->tipe->tipe . " berhasil aktifkan oleh " . auth()->user()->nama;
         $notif = Notifikasi::notif('barang', $pesan, 'nonaktif', 'berhasil');
         Notifikasi::create($notif)->user()->sync(User::adminId());
-        return redirect()->back()->with('toast_success', 'berhasil nonaktifkan barang' . $barang->jenis->jenis . ' ' . $barang->merk->merk . '' . $barang->tipe->tipe);
+        return redirect()->back()->with('toast_success', 'berhasil aktifkan barang' . $barang->jenis->jenis . ' ' . $barang->merk->merk . '' . $barang->tipe->tipe);
     }
 }
