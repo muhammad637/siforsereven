@@ -15,8 +15,9 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="">
-          <a {{ Route::currentRouteName() == 'home' ? 'active' : ''}} href="{{ route('home')}}">
+        <li class="nav-item">
+          <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
+          href="{{ route('home') }}">
             <i class="fa fa-desktop text-danger"></i>
             <p>Dashboard</p>
           </a>
@@ -27,7 +28,7 @@
           </a>
         </li>
         <li>
-          <a  {{ Route::currentRouteName() == 'order' ? 'active' : ''}} href="{{ route('order')}} ">
+          <a class="nav-link"{{ Route::currentRouteName() == 'order' ? 'active' : ''}} href="{{ route('order')}} ">
             <i class="fa fa-wrench text-success"></i>
             <p>Service Request</p>
           </a>
