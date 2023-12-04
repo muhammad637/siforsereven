@@ -103,7 +103,7 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <a href="#update-{{ $order->id }}" data-bs-toggle="modal"
+                                                        <a href="#update-{{ $order->id }}" data-toggle="modal"
                                                             class="badge bg-warning">edit</a>
                                                     </td>
                                                 @endif
@@ -148,7 +148,7 @@
                                                                         class="col-form-label">Terakhir diupdate</label>
                                                                     <input type="text" id="tanggal_edit"
                                                                         class="form-control"
-                                                                        value="{{ $parse($order->updated_at) . ' ' . $parse_hour($order->updates_at) }}"readonly></input>
+                                                                        value="{{ $parse($order->updated_at) . ' ' . $parse_hour($order->updates_at) }}"readonly>
                                                                 </div>
                                                             </form>
                                                         </div>
