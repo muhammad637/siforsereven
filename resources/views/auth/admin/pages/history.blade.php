@@ -276,7 +276,7 @@
                                                     @else
                                                         <td class="text-center">
                                                             <a href="#update-{{ $history->id }}" data-toggle="modal"
-                                                                class="badge bg-warning">edit</a>
+                                                                class="badge bg-warning" style="color: white;">edit</a>
                                                         </td>
                                                     @endif
 
