@@ -151,6 +151,7 @@
                             <div class="table-responsive">
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead class=" text-secondary">
+                                        <th class="text-center">NO</th>
                                         <th class="text-center">TANGGAL ORDER</th>
                                         <th class="text-center">NAMA BARANG</th>
                                         <th class="text-center">NAMA RUANGAN</th>
@@ -179,6 +180,10 @@
                                                     // $array = json_decode($order->pesan, true);
                                                 @endphp
                                                 <tr>
+                                                    <td class="text-center">
+                                                        {{ $loop->iteration }}
+                                                        
+                                                    </td>
                                                     <td class="text-center">
                                                         {{ Carbon::parse($history->tanggal_order)->format('d-M-Y') }} <br>
                                                         {{ Carbon::parse($history->created_at)->format('H:i:s') }}
@@ -249,7 +254,7 @@
                                                                                 <input type="text" id="tanggal_edit"
                                                                                     class="form-control"
                                                                                     value="{{ Carbon::parse($history->updated_at)->format('d-M-Y H:i:s') }}"
-                                                                                    readonly></input>
+                                                                                    readonly>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -300,7 +305,6 @@
                                                                     action="{{ route('update.history', ['order' => $history->id]) }}"
                                                                     method="post">
                                                                     <div class="modal-body">
-
                                                                         @method('put')
                                                                         @csrf
                                                                         <div class="row">
@@ -660,3 +664,10 @@
         </footer>
 
     @endsection
+    @push('js')
+        <script>
+            $(document).ready(function(){
+              $('#example').dataTable()
+            })
+        </script>
+    @endpush

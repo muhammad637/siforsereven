@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class HistoryController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $history = Order::where('status', 'selesai')->orderBy('updated_at', 'desc')->get();
         $barang = Barang::orderBy('jenis_id', 'asc')->get();

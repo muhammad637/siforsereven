@@ -1,0 +1,4 @@
+ <a href="https://wa.me/{{substr(trim($model->user->no_teknisi), 0, 1) == '0' ? '62' . substr(trim($user->no_teknisi), 1) : $model->user->no_teknisi }}/?text=SIFORSEVEN%0Auntuk : {{ $model->user->nama }}%0Aada orderan barang {{ $model->barang->jenis->jenis }} {{ $model->barang->merk->merk }} {{ $model->barang->tipe->tipe }}%0Adengan keluhan {{ $model->pesan_kerusakan }} %0Adari ruangan {{ $model->ruangan->nama }} %0Amohon diambil di ruang IT RSUD Blambangan Banyuwangi%0Adari Admin SIFORSEVEN: {{ auth()->user()->nama }}%0ATerimakasih"
+                                                            target="_blank" class="badge bg-info p-2"
+                                                            style="color: white;"><span>{{ $model->user->nama }} </span> <i
+                                                                class="fa fa-whatsapp fs-6" aria-hidden="true"></i> </a>

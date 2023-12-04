@@ -12,21 +12,55 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
+
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $orders =  Order::where('user_id', auth()->user()->id)->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc')->get();
         $ruangans =  Ruangan::orderBy('nama','asc')->get();
         if (auth()->user()->cekLevel == 'admin') {
             $orders =  Order::where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc')->get();
         }
- 
         // return $orders;
+        if ($request->ajax()) {
+            $orders =  Order::query()->where('user_id', auth()->user()->id)->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc');
+            if (auth()->user()->cekLevel == 'admin') {
+                $orders =  Order::query()->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc');
+            }
+            // return $orders;
+            return DataTables::of($orders)
+                ->addIndexColumn()
+                ->addColumn('tanggal_order', function ($item) {
+                    return Carbon::parse($item->created_at)->format('d-M-Y H:i:s');
+                })
+                ->addColumn('ruangan', function ($item) {
+                    return $item->ruangan->nama;
+                })
+                ->addColumn('tanggal_selesai', function ($item) {
+                    $tanggal_selesai = $item->tanggal_selesai;
+                    return $tanggal_selesai ? Carbon::parse($item->tanggal_selesai)->format('d-M-Y') : '-';
+                })
+                ->addColumn('barang',function($order){
+                         return  $order->barang->jenis->jenis . ' ' . $order->barang->merk->merk . ' ' . $order->barang->tipe->tipe ;
+                })
+                ->addColumn('status',function($order){
+                         return $order->status == null ? 'pending' : $order->status ;
+                })
+                ->addColumn('hub-pelapor','auth.admin.pages.part.hub-pelapor')
+                ->addColumn('hub-teknisi','auth.admin.pages.part.hub-teknisi')
+                ->addColumn('pesan-service','auth.admin.pages.part.pesan-service')
+                ->addColumn('print','auth.admin.pages.part.print')
+                ->addColumn('aksi','auth.admin.pages.part.aksi')
+                ->rawColumns(['status','tanggal_order','hub-pelapor','barang','ruangan','tanggal_selesai','aksi','print','hub-teknisi','pesan-service','print'])
+                ->make(true);
+                // ->toJson();
+        }
         return view('auth.admin.pages.order', [
+            'orders' => $orders,
             'barangs' => Barang::where('status','aktif')->orderBy('merk_id', 'asc')->get(),
             'users' => User::where('cekLevel', 'teknisi')->where('status', 'aktif')->get(),
-            'orders' => $orders,
             'ruangans' => $ruangans,
             'parse' => function ($date) {
                 return Carbon::parse($date)->format('d-M-Y');
@@ -110,6 +144,25 @@ class OrderController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             return $th->getMessage();
+        }
+    }
+
+    public function tes(Request $request){
+
+        // return 'testing';
+        if($request->ajax()){
+            $orders =  Order::query()->where('user_id', auth()->user()->id)->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc');
+            if (auth()->user()->cekLevel == 'admin') {
+                $orders =  Order::query()->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc');
+            }
+            // return $orders;
+            return DataTables::of($orders)
+                ->addIndexColumn()
+                ->addColumn('tes', function ($item) {
+                    return Carbon::parse($item->created_at)->format('d-M-Y H:i:s');
+                })
+                ->rawColumns(['tes'])
+                ->toJson();
         }
     }
 }
