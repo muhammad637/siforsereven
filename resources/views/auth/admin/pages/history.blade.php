@@ -19,6 +19,8 @@
 
                         <div class="card-header">
                             <h4 class="card-title">HISTORY</h4>
+                            @if (auth()->user()->cekLevel == 'admin')
+                             
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdownMenuLink2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +50,7 @@
 
                                 </ul>
                             </div>
+                            @endif
 
                         </div>
 
