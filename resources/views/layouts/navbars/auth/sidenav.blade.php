@@ -15,7 +15,7 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="nav-item">
+        <li class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
           <a class=""
           href="{{ route('home') }}">
             <i class="fa fa-desktop text-danger"></i>
@@ -44,7 +44,7 @@
         @if (auth()->user()->cekLevel == 'teknisi')
         <li>
           <a  {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href=" {{route('profile')}}" >
-            <i class="nc-icon nc-pin-3 text-warning"></i>
+            <i class="fa fa-user text-warning"></i>
             <p>Profile</p>
           </a>
         </li>
@@ -55,20 +55,20 @@
             <h6 class="ps-6 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="margin-top: 2px;">Master</h6>
           </a>
         </li>
-        <li>
-          <a {{ Route::currentRouteName() == 'barang' ? 'active' : ''}} href="{{route('barang')}}">
+        <li class=" {{ Route::currentRouteName() == 'barang' ? 'active' : ''}}">
+          <a href="{{route('barang')}}">
             <i class="fa fa-cube" style="color: #3506CA;"></i>
             <p>Barang</p>
           </a>
         </li>
-        <li>
-          <a {{ str_contains(request()->url(), 'user') == true ? 'active' : '' }} href="{{route('user.index')}}">
+        <li class="{{ str_contains(request()->url(), 'user') == true ? 'active' : '' }}">
+          <a href="{{route('user.index')}}">
             <i class="fa fa-users" style="color: black;"></i>
             <p>User Management</p>
           </a>
         </li>
-        <li>
-          <a {{ str_contains(request()->url(), 'ruangan') == true ? 'active' : '' }} href="{{route('ruangan')}}">
+        <li class="{{ str_contains(request()->url(), 'ruangan') == true ? 'active' : '' }}">
+          <a href="{{route('ruangan')}}">
             <i class="fa fa-hospital-o text-primary"></i>
             <p>Ruangan</p>
           </a>
@@ -79,8 +79,8 @@
             <p>Lokasi</p>
           </a> --}}
         </li>
-        <li>
-          <a {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href="{{route('profile')}}">
+        <li class="{{ Route::currentRouteName() == 'profile' ? 'active' : '' }}">
+          <a href="{{route('profile')}}">
             <i class="fa fa-user" style="color: blueviolet"></i>
             <p>Profile</p>
           </a>

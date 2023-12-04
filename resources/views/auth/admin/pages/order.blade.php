@@ -42,7 +42,9 @@
                                         @else
                                             <th class="text-center">AKSI</th>
                                         @endif
+                                        @if (auth()->user()->cekLevel == 'admin')
                                         <th class="text-center">PRINT</th>
+                                        @endif
                                     </thead>
                                     <tbody>
                                         @foreach ($orders as $order)
@@ -103,15 +105,17 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        <a href="#update-{{ $order->id }}" data-bs-toggle="modal"
-                                                            class="badge bg-warning">edit</a>
+                                                        <a href="#update-{{ $order->id }}" data-toggle="modal"
+                                                            class="badge bg-warning" style="color: white">edit</a>
                                                     </td>
                                                 @endif
+                                                @if (auth()->user()->cekLevel =='admin')
                                                 <td class="text-center">
                                                     <a href="{{ route('order.print', ['order' => $order->id]) }}"
                                                         class="badge bg-success" style="color: white;" target="_blank"><i
                                                             class="fa fa-print" aria-hidden="true"></i></a>
                                                 </td>
+                                                @endif
                                             </tr>
 
                                             <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
@@ -171,10 +175,6 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Form Update
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
                                                         </div>
                                                         <form
                                                             action="{{ route('update.order', ['order' => $order->id]) }}"
@@ -294,10 +294,10 @@
 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn bg-gradient-secondary"
-                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn bg-secondary"
+                                                                    data-dismiss="modal">Close</button>
                                                                 <button type="submit"
-                                                                    class="btn bg-gradient-primary">Submit</button>
+                                                                    class="btn bg-primary">Submit</button>
                                                             </div>
                                                         </form>
                                                     </div>

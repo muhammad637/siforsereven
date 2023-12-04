@@ -19,7 +19,7 @@
 
                         <div class="card-header">
                             <h4 class="card-title">HISTORY</h4>
-                                
+                                @if(auth()->user()->cekLevel == 'admin')
                             <div class="dropdown">
                                 <button href="#" class="btn bg-gradient-dark dropdown-toggle " data-toggle="dropdown-menu"
                                     id="navbarDropdownMenuLink2">
@@ -50,6 +50,7 @@
 
                                 </ul>
                             </div>
+                                @endif
                             
                         </div>
 
