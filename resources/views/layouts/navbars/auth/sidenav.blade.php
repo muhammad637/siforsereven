@@ -16,7 +16,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}"
+          <a class=""
           href="{{ route('home') }}">
             <i class="fa fa-desktop text-danger"></i>
             <p>Dashboard</p>
