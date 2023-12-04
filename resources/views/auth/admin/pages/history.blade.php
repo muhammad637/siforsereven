@@ -98,6 +98,53 @@
                               </button>
                           </div> -->
 
+{{-- <<<<<<< HEAD
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                        Barang
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                        Ruangan
+                                    </th>
+                                    @if(auth()->user()->cekLevel == 'admin')
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                            Pelapor
+                                        </th>
+                                    @endif
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Status</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Keterangan</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Kerusakan</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Tanggal Selesai</th>
+                                    @if(auth()->user()->cekLevel == 'admin')
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                        Teknisi
+                                    </th>
+                                    @else
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi
+                                    </th>
+                                    @endif
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @if (session()->get('history') != 'tidak ada')
+                                    @foreach ($historys as $history)
+                                        @php
+                                            // $i += $order->jumlah_order;
+                                            $nohp = $history->no_pelapor;
+                                            if (substr(trim($nohp), 0, 1) == '0') {
+                                                $nohp = '62' . substr(trim($nohp), 1);
+                                            }
+                                            // $array = json_decode($order->pesan, true);
+                                        @endphp
+======= --}}
                         <div class="card-body" style="height: 100%;">
                             <div class="table-responsive">
                                 <table id="example" class="table table-striped" style="width:100%">

@@ -73,10 +73,10 @@
           </a>
         </li>
         <li>
-          <a {{Route::currentRouteName() == 'outlet_map.index' ? 'active' : ''}} href="{{route('outlet_map.index')}}">
+          {{-- <a {{Route::currentRouteName() == 'outlet_map.index' ? 'active' : ''}} href="{{route('outlet_map.index')}}">
             <i class="fa fa-map text-success"></i>
             <p>Lokasi</p>
-          </a>
+          </a> --}}
         </li>
         <li>
           <a {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href="{{route('profile')}}">

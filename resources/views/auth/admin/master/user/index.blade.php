@@ -14,8 +14,8 @@
                         <div class="card-header">
                             <h4 class="card-title">List User</h4>
                             @if (auth()->user()->cekLevel == 'admin')
-                                <button type="button" class="btn bg-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modaltambah">
+                                <button type="button" class="btn bg-primary" data-toggle="modal"
+                                    data-target="#modaltambah">
                                     <i class="fa fa-wrench" aria-hidden="true"></i> Tambah
                                 </button>
                             @endif
@@ -61,7 +61,7 @@
                                             
                                       
                                             <td>
-                                                <a href="#modalEdit-{{ $user->id }}" data-bs-toggle="modal"
+                                                <a href="#modalEdit-{{ $user->id }}" data-toggle="modal"
                                                     class="badge bg-warning" style="color: white">edit</a>
                                                     @if ($user->status == 'aktif')
                                                         <a href="{{ route('user.nonaktif', ['user' => $user->id]) }}"
