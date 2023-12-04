@@ -27,13 +27,13 @@
             <h6 class="ps-6 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="margin-top: 2px;">Pages</h6>
           </a>
         </li>
-        <li>
+        <li class="{{ Route::currentRouteName() == 'order' ? 'active' : ''}}">
           <a class="nav-link"{{ Route::currentRouteName() == 'order' ? 'active' : ''}} href="{{ route('order')}} ">
             <i class="fa fa-wrench text-success"></i>
             <p>Service Request</p>
           </a>
         </li>
-        <li>
+        <li class="{{ str_contains(request()->url(), 'history') == true ? 'active' : '' }}">
           <a {{ str_contains(request()->url(), 'history') == true ? 'active' : '' }}  href="{{route('history')}}">
             <i class="fa fa-history text-primary"></i>
             
