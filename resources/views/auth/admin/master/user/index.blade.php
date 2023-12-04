@@ -259,9 +259,9 @@
                                     <label for="password">Password</label>
                                     <div class="input-group mb-4">
                                         <input class="form-control" placeholder="Password" name="password"
-                                            type="password" id="currentPassword">
+                                            type="password" id="current_password-4">
                                             <span class="input-group-text"><i class="fa fa-eye"
-                                                aria-hidden="true"></i></span>
+                                                aria-hidden="true" id="myButton-4"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn bg-primary">Submit</button>
                     </div>
                 </form>

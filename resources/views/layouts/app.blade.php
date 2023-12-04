@@ -106,6 +106,7 @@
             $('#eye').addClass('fa fa-eye-slash')
             $('#eye1').addClass('fa fa-eye-slash')
             $('#eye2').addClass('fa fa-eye-slash')
+            $('#mata').addClass('fa fa-eye-slash')
             $('#mybutton').click(function() {
                 // $('#currentPassword').attr('value','aan')
                 var passwordInputan = $('#currentPassword');
@@ -116,9 +117,13 @@
                     passwordInputan.attr('type', 'text');
                     $('#eye1').removeClass('fa fa-eye-slash')
                     $('#eye1').addClass('fa fa-eye')
+                    $('mata').removeClass('fa fa-eye-slash')
+                    $('mata').addClass('fa fa-eye')
                 } else {
                     $('#eye1').removeClass('fa fa-eye')
                     $('#eye1').addClass('fa fa-eye-slash')
+                    $('mata').removeClass('fa fa-eye-slash')
+                    $('mata').addClass('fa fa-eye')
                     passwordInputan.attr('type', 'password');
                 }
             });
@@ -162,6 +167,7 @@
             //     }
             // });
         });
+ 
     </script>
     @stack('js')
     @include('sweetalert::alert')

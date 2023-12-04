@@ -154,7 +154,8 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn bg-gradient-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                                data-dismiss="modal" aria-label="Close">Close
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -332,9 +333,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modaltambahLabel">Form Tambah Order</h5>
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <form action="{{ route('store.order') }}" method="post">
                         @csrf
@@ -427,7 +425,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
-                                data-bs-dismiss="modal">Close</button>
+                                data-dismiss="modal">Close</button>
                             <button type="submit" class="btn bg-primary">Buat Request</button>
                         </div>
 

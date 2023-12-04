@@ -40,15 +40,13 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="currentPassword" name="password" value="{{old('password')}}">@error('password') <p class="text-danger text-xs pt-1">{{$message}}</p>@enderror
                   </div>
-                  <div class="form-check form-switch">
+                  <div class="ml-4">
                     <input class="form-check-input" name="remember" type="checkbox" id="mybutton">
                     <label class="form-check-label" for="mybutton">show password</label>
                 </div>
                   <button type="submit" class="btn btn-lg btn-lg w-100 mt-4 mb-0" style="background-color: #FB6340; color:white;">Login</button>
                 </form>
-                
               </div>
-              
             </div>
             
           </div>
@@ -62,3 +60,36 @@
 
 @endsection
 
+{{-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form role="form
+  " method="post" action="{{ route('login.perform')}}">
+  @csrf
+  @method('post')
+  <div class="form-group first">
+                    
+    <label for="username">Username</label>
+    <input type="text" class="form-control" name ="username" id="username" value="{{old ('username') ?? ''}}">
+    @error('username') <p class="text-danger text-xs pt-1">
+        {{$message}}
+        </p>@enderror
+  </div>
+  <div class="form-group last mb-4">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="currentPassword" name="password" value="{{old('password')}}">@error('password') <p class="text-danger text-xs pt-1">{{$message}}</p>@enderror
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" name="remember" type="checkbox" id="mybutton">
+    <label class="form-check-label" for="mybutton">show password</label>
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</body>
+</html> --}}
