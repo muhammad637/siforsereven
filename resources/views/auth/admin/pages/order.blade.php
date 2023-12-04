@@ -79,12 +79,12 @@
                                                     {{ $order->status == null ? 'pending' : $order->status }}</td>
                                                 <td class="text-center">
                                                     @if ($order->pesan_status != null)
-                                                        <button type="button"
-                                                            class="badge bg-gradient-success btn-block mb-0 border-0"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#keterangan-{{ $order->id }}">
+                                                        <a type="button"
+                                                            class="bg-gradient-success btn-block mb-0 border-0"
+                                                            data-toggle="modal"
+                                                            data-target="#keterangan-{{ $order->id }}">
                                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                        </button>
+                                                        </a>
                                                     @else
                                                         <p class="text-sm font-weight-bold mb-0">
                                                             {{ $order->pesan_status == null ? ' - ' : $order->pesan_status }}
@@ -128,10 +128,6 @@
                                                             <h5 class="modal-title" id="exampleModalLabel">Keterangan
                                                                 Status
                                                             </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form>
