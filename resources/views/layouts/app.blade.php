@@ -64,9 +64,16 @@
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> --}}
 
     {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> --}}
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.22/js/dataTables.bootstrap4.min.js"></script>
+     --}}
+     {{-- <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script> --}}
+     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> --}}
+     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     {{-- <script>

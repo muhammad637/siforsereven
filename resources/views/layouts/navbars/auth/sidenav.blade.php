@@ -42,8 +42,8 @@
         </li>
         
         @if (auth()->user()->cekLevel == 'teknisi')
-        <li>
-          <a  {{ Route::currentRouteName() == 'profile' ? 'active' : '' }} href=" {{route('profile')}}" >
+        <li class="{{ Route::currentRouteName() == 'profile' ? 'active' : '' }}">
+          <a   href=" {{route('profile')}}" >
             <i class="fa fa-user text-warning"></i>
             <p>Profile</p>
           </a>
