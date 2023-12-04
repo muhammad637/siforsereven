@@ -195,7 +195,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn bg-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
+                                                                        data-dismiss="modal">Close</button>
                                                                     <button type="submit"
                                                                         class="btn bg-primary">Save</button>
                                                                 </div>
