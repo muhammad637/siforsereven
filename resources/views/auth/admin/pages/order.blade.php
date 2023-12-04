@@ -29,6 +29,7 @@
                             <div class="table-responsive">
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead class=" text-secondary">
+                                        <th class="text-center">NO</th>
                                         <th class="text-center">TANGGAL ORDER</th>
                                         <th class="text-center">NAMA BARANG</th>
                                         <th class="text-center">NAMA RUANGAN</th>
@@ -61,6 +62,7 @@
                                                 // $array = json_decode($order->pesan, true);
                                             @endphp
                                             <tr>
+                                                <td class="text-center">{{ $loop->iteration}}</td>
                                                 <td class="text-center"> {{ $parse($order->tanggal_order) }}
                                                     <br>{{ $parse_hour($order->created_at) }}
                                                 </td>

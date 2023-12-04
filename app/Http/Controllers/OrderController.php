@@ -16,10 +16,10 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders =  Order::where('user_id', auth()->user()->id)->where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc')->get();
+        $orders =  Order::where('user_id', auth()->user()->id)->where('status', null)->orWhere('status', 'on progress')->orderBy('tanggal_order', 'desc')->get();
         $ruangans =  Ruangan::orderBy('nama','asc')->get();
         if (auth()->user()->cekLevel == 'admin') {
-            $orders =  Order::where('status', null)->orWhere('status', 'on progress')->orderBy('created_at', 'desc')->get();
+            $orders =  Order::where('status', null)->orWhere('status', 'on progress')->orderBy('tanggal_order', 'desc')->get();
         }
  
         // return $orders;
