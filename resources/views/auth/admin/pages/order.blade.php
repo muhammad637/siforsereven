@@ -131,10 +131,7 @@
                                                             <h5 class="modal-title" id="exampleModalLabel">Keterangan
                                                                 Status
                                                             </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
+                                                           
                                                         </div>
                                                         <div class="modal-body">
                                                             <form>
