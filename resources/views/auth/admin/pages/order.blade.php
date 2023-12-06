@@ -51,7 +51,6 @@
                                         @endif
                                     </thead>
                                     <tbody>
-                                       
                                     </tbody>
                                 </table>
                             </div>
