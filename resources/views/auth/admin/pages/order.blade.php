@@ -84,8 +84,8 @@
                                                     @if ($order->pesan_status != null)
                                                         <button type="button"
                                                             class="badge bg-gradient-success btn-block mb-0 border-0"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#keterangan-{{ $order->id }}">
+                                                            data-toggle="modal"
+                                                            data-target="#keterangan-{{ $order->id }}">
                                                             <i class="fa fa-envelope" aria-hidden="true"></i>
                                                         </button>
                                                     @else
