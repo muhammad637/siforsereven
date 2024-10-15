@@ -184,39 +184,7 @@
        
       </div>
     </div>
-    <div class="modal fade" id="keterangan-{{ $order->id }}" tabindex="-1"
-      role="dialog" aria-labelledby="keterangan-modalTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Keterangan
-                      Status
-                  </h5>
-              </div>
-              <div class="modal-body">
-                  <form>
-                      <div class="form-group">
-                          <label for="recipient-name" class="col-form-label">Nama
-                              Teknisi:</label>
-                          <input type="text" class="form-control"
-                              value="{{$order->user->nama}}" readonly
-                              id="recipient-name">
-                      </div>
-                      <div class="form-group">
-                          <label for="message-text" class="col-form-label">Keterangan
-                              Status</label>
-                          <textarea class="form-control" id="message-text" readonly value="{{$order->pesan_status}}">{{$order->pesan_status}}</textarea>
-                      </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn bg-gradient-secondary"
-                      data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
+  
  
   </div>
   
