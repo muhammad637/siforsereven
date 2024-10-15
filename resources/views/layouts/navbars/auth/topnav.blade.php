@@ -31,7 +31,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item btn-rotate dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="get-data"
+                    <a class="nav-link dropdown-toggle" id="get-data"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-bell-55"></i>
                         <p>
@@ -91,7 +91,7 @@
                               </li>
                       `)
                   if (data.length == 0) $('#data').append(
-                      `<li class="notification-item"> <h4 class="mx-auto text-center mt-2">pesan kosong</h4></li>`
+                      `<li class="notification-item"> <h5 class="mx-auto text-center mt-2">pesan kosong</h4></li>`
                   )
                   else {
                       $.each(data, async function(index, item) {
@@ -107,14 +107,15 @@
                                   'fa fa-x-circle text-danger')
                           }
                           var div = $('<div>').addClass('ms-2').css('cursor', 'pointer')
-                          var h5 = $('<h5>').addClass(
+                          var h5 = $('<h6>').addClass(
                               'font-poppins text-uppercase').text(
                               "tabel " +
                               await item
                               .nama_table);
                           var p = $('<span>').addClass(
-                              'font-poppins font-weight-bold mb-2 fs-12'
-                              ).text(
+                              'font-poppins font-weight-bold'
+                              ).css('font-size', '12px')
+                              .text(
                               await item.msg);
                           var hr = $('<hr>').addClass('dropdown-divider');
                           div.append(h5, p)

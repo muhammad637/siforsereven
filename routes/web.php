@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/pages/history', [HistoryController::class, 'index'])->name('history');
 	Route::get('pages/order', [OrderController::class, 'index'])->name('order');
+	Route::get('tes', [OrderController::class, 'tes'])->name('tes');
 
 	// notifikasi
 	Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi');
